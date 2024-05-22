@@ -1,3 +1,25 @@
+"""MIT License
+
+Copyright (c) 2024 Raytopia
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE."""
+
 import cgi
 import os
 from http.cookies import SimpleCookie
@@ -6,7 +28,7 @@ import html
 import ast
 
 
-def Cookie():
+def cookie():
     return SimpleCookie(os.getenv("HTTP_COOKIE"))
 
 
@@ -268,21 +290,22 @@ class tag:
         self.name = name
 
     def __enter__(self):
-        _print(f"<{self.name} {self.params}>")
+        print(f"<{self.name} {self.params}>")
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        _print(f"</{self.name}>")
+        print(f"</{self.name}>")
 
 
 class form:
-    def __init__(self, action):
+    def __init__(self, action, params=""):
         self.action = action
+        self.params = params
 
     def __enter__(self):
-        _print(f"<form method='post' action='cgi-bin/{self.action}'>")
+        print(f"<form method='post' action='cgi-bin/{self.action}' {self.params}>")
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        _print(f"</form>")
+        print(f"</form>")
 
 
 def start():
