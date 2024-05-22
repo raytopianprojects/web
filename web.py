@@ -69,24 +69,6 @@ class Table:
         con.commit()
         con.close()
 
-    def update(self, name, value, where):
-        con = sqlite3.connect(self.database)
-        cur = con.cursor()
-        cur.execute(f"UPDATE {self.name} SET ? = ? WHERE ?", (name, value, where))
-        con.commit()
-        con.close()
-
-    def delete(self):
-        ...
-
-    def create(self):
-        ...
-
-    def select(self, *args):
-        con = sqlite3.connect(self.database)
-        cur = con.cursor()
-        res = con.execute
-
     def __getitem__(self, key):
         con = sqlite3.connect(self.database)
         cur = con.cursor()
@@ -150,115 +132,103 @@ class Settings:
         return os.getenv("SCRIPT_NAME")
 
     @property
-    def AUTH_TYPE(self):
+    def auth_type(self):
         return os.getenv("AUTH_TYPE")
 
     @property
-    def CONTENT_LENGTH(self):
+    def content_length(self):
         return os.getenv("CONTENT_LENGTH")
 
     @property
-    def DOCUMENT_ROOT(self):
+    def document_root(self):
         return os.getenv("DOCUMENT_ROOT")
 
     @property
-    def DOCUMENT_NAME(self):
+    def document_name(self):
         return os.getenv("DOCUMENT_NAME")
 
     @property
-    def DATE_GMT(self):
+    def date_gmt(self):
         return os.getenv("DATE_GMT")
 
     @property
-    def DATE_LOCAL(self):
+    def data_local(self):
         return os.getenv("DATE_LOCAL")
 
     @property
-    def DOCUMENT_NAME(self):
-        return os.getenv("DOCUMENT_NAME")
-
-    @property
-    def DATE_GMT(self):
-        return os.getenv("DATE_GMT")
-
-    @property
-    def DATE_LOCAL(self):
-        return os.getenv("DATE_LOCAL")
-
-    @property
-    def DOCUMENT_URI(self):
+    def document_uri(self):
         return os.getenv("DOCUMENT_URI")
 
     @property
-    def GATEWAY_INTERFACE(self):
+    def gateway_interface(self):
         return os.getenv("GATEWAY_INTERFACE")
 
     @property
-    def LAST_MODIFIED(self):
+    def last_modified(self):
         return os.getenv("LAST_MODIFIED")
 
     @property
-    def PATH(self):
+    def path(self):
         return os.getenv("PATH")
 
     @property
-    def PATH_INFO(self):
+    def path_info(self):
         return os.getenv("PATH_INFO")
 
     @property
-    def PATH_TRANSLATED(self):
+    def path_translated(self):
         return os.getenv("PATH_TRANSLATED")
 
     @property
-    def REMOTE_ADDR(self):
+    def remote_addr(self):
         return os.getenv("REMOTE_ADDR")
 
     @property
-    def REMOTE_HOST(self):
+    def remote_host(self):
         return os.getenv("REMOTE_HOST")
 
     @property
-    def REMOTE_IDENT(self):
+    def remote_ident(self):
         return os.getenv("REMOTE_IDENT")
 
     @property
-    def REMOTE_USER(self):
+    def remote_user(self):
         return os.getenv("REMOTE_USER")
 
     @property
-    def REQUEST_METHOD(self):
+    def request_method(self):
         return os.getenv("REQUEST_METHOD")
 
     @property
-    def SCRIPT_NAME(self):
+    def script_name(self):
         return os.getenv("SCRIPT_NAME")
 
     @property
-    def SERVER_NAME(self):
+    def server_name(self):
         return os.getenv("SERVER_NAME")
 
     @property
-    def SERVER_PORT(self):
+    def server_port(self):
         return os.getenv("SERVER_PORT")
 
     @property
-    def SERVER_PROTOCOL(self):
+    def server_protocol(self):
         return os.getenv("SERVER_PROTOCOL")
 
     @property
-    def SERVER_ROOT(self):
+    def server_root(self):
         return os.getenv("SERVER_ROOT")
 
     @property
-    def SERVER_SOFTWARE(self):
+    def server_software(self):
         return os.getenv("SERVER_SOFTWARE")
 
     @property
-    def HTTP_ACCEPT(self):
+    def http_accept(self):
         return os.getenv("HTTP_ACCEPT")
 
     @property
-    def HTTP_CONNECTION(self):
+    def http_connection(self):
         return os.getenv("HTTP_CONNECTION")
 
     @property
@@ -266,15 +236,15 @@ class Settings:
         return os.getenv("HTTP_HOST")
 
     @property
-    def HTTP_PRAGMA(self):
+    def http_pragma(self):
         return os.getenv("HTTP_PRAGMA")
 
     @property
-    def HTTP_REFERER(self):
+    def http_referer(self):
         return os.getenv("HTTP_REFERER")
 
     @property
-    def HTTP_USER_AGENT(self):
+    def http_user_agent(self):
         return os.getenv("HTTP_USER_AGENT")
 
 
